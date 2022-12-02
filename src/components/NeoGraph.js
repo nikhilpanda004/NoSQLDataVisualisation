@@ -28,9 +28,9 @@ const NeoGraph = (props) => {
     const config = {
       containerId: visRef.current.id,
 			neo4j: {
-				serverUrl: 'bolt://3.95.149.64:7687',
+				serverUrl: 'bolt://0e079bbb.databases.neo4j.io', //'bolt://3.95.149.64:7687',
 				serverUser: 'neo4j',
-				serverPassword: 'explanation-minuses-height',
+				serverPassword:  'nvDO1aeIzIDHo_TcCZC73tp2hA_1PqHrZUO_zvDhZvA', //'explanation-minuses-height',
         // driverConfig: { 
         //   encrypted: "ENCRYPTION_ON",
         //   trust: "TRUST_SYSTEM_CA_SIGNED_CERTIFICATES"
@@ -89,30 +89,6 @@ const NeoGraph = (props) => {
           group: "released",
           title: "released",
         },
-        // Director: {
-        //   label: neo4jLabels ? "name" : "",
-        // },
-        // Genre: {
-        //   label: neo4jLabels ? "name" : "",
-        // },
-        // Person: {
-        //   label: neo4jLabels ? "name" : "",
-        //   value: "imdbId",
-        //   group: "bornIn",
-        //   [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
-        //     static: {
-        //       color: "#97c2fc",
-        //       //shape: "dot",
-        //       //size: 25,
-        //       font: {
-        //         "background": "none",
-        //         "strokeWidth": "0",
-        //         "size": 12,
-        //         "color": "black"
-        //       }
-        //     },
-        // }
-        // },
         User: {
           label: 'name'
         }
@@ -182,12 +158,7 @@ const NeoGraph = (props) => {
     {
       visRef.current.vis.clearNetwork();
       visRef.current.vis.render();
-      //visRef.current.vis.network.setOptions(options);
       console.log(visRef.current.vis['nodes'].length);
-      //console.log(visRef.current.vis.nodes.distinct('label'));
-      // visRef.current.vis.nodes.on('*', function (event, properties, senderId) {
-      //   console.log('event', event, properties);
-      // });
   }
   }, [neo4jUri, neo4jUser, neo4jPassword, neo4jLabels, neo4jVisConfig]);
 
@@ -198,21 +169,6 @@ const NeoGraph = (props) => {
       {
         visRef.current.vis.clearNetwork();
         visRef.current.vis.renderWithCypher(neo4jCypherQuery);
-        //visRef.current.vis.stabilize();
-      //   visRef.current.vis.registerOnEvent('clickNode', (properties) => {
-      //     console.log(properties);
-      //     console.log(properties.node.raw.properties);
-      // });
-      // visRef.current.vis.registerOnEvent('clickEdge', (properties) => {
-      //   console.log(properties.edge.raw.properties);
-      // });
-      // visRef.current.vis.network.on( 'click', function(properties) {
-      //   console.log('I\'m clicked');
-      //   var ids = properties.nodes;
-      //   //var clickedNodes = nodes.get(ids);
-      //   console.log('clicked nodes:');
-      //   console.log(ids);
-      // });
       console.log(visRef.current.vis.nodes.length);
       }
     }

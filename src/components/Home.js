@@ -21,13 +21,12 @@ function Home (props) {
 
     useEffect(() => {
       const neo4j = require('neo4j-driver');
-      const driver = neo4j.driver('bolt://3.95.149.64:7687',
-                    neo4j.auth.basic('neo4j', 'explanation-minuses-height')); 
-      var query = "Match (n) Return Distinct Labels(n) as Label";
-      const session = driver.session({database:"neo4j"});
-
+      const driver = neo4j.driver('bolt://0e079bbb.databases.neo4j.io',
+                    neo4j.auth.basic('neo4j', 'nvDO1aeIzIDHo_TcCZC73tp2hA_1PqHrZUO_zvDhZvA')); 
+      //var query = "Match (n) Return Distinct Labels(n) as Label";
+      const session = driver.session({database:'neo4j'});
       // Fetching Label names
-      session.run(query)
+      session.run('CALL db.labels()')
       .then((result) => {
         setlabels(result.records)
         // result.records.forEach((record) => {
@@ -40,8 +39,8 @@ function Home (props) {
       });
 
       //Fetching Edge names
-      query = "Match ()-[r]->() Return Distinct Type(r) as Edge";
-      driver.session({database:"neo4j"}).run(query)
+      //query = "Match ()-[r]->() Return Distinct Type(r) as Edge";
+      driver.session({database:"neo4j"}).run('CALL db.relationshipTypes()')
       .then((result) => {
         setEdges(result.records);
         driver.session({database:"neo4j"}).close();
@@ -161,7 +160,7 @@ function Home (props) {
                     <Form.Label className="mx-3">Labels:</Form.Label>
                     {
                       labels.map((labelrec) => {
-                        let labelName = labelrec.get('Label')[0];
+                        let labelName = labelrec.get('label');
                         return (<Form.Check className="mx-3" id={"label-"+labelName} type="checkbox" label={labelName} value={true} onChange={(event) => handleLabelSelection(event)}/>)
                       })
                     }
@@ -170,7 +169,7 @@ function Home (props) {
                     <Form.Label className="mx-3">Edges:</Form.Label>
                     {
                       edges.map((edgerec) => {
-                        let edgeName = edgerec.get('Edge');
+                        let edgeName = edgerec.get('relationshipType');
                         return (<Form.Check className="mx-3" id={"edge-"+edgeName} type="checkbox" label={edgeName} value={true} onChange={(event) => handleLabelSelection(event)}/>)
                       })
                     }
