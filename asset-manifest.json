@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/NoSQLDataVisualisation/static/css/main.c59cc657.css",
+    "main.js": "/NoSQLDataVisualisation/static/js/main.d48658f1.js",
+    "index.html": "/NoSQLDataVisualisation/index.html",
+    "main.c59cc657.css.map": "/NoSQLDataVisualisation/static/css/main.c59cc657.css.map",
+    "main.d48658f1.js.map": "/NoSQLDataVisualisation/static/js/main.d48658f1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c59cc657.css",
+    "static/js/main.d48658f1.js"
+  ]
+}
