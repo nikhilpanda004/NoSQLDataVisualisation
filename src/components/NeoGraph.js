@@ -158,7 +158,7 @@ const NeoGraph = (props) => {
     {
       visRef.current.vis.clearNetwork();
       visRef.current.vis.render();
-      console.log(visRef.current.vis['nodes'].length);
+      //console.log(visRef.current.vis['nodes'].length);
   }
   }, [neo4jUri, neo4jUser, neo4jPassword, neo4jLabels, neo4jVisConfig]);
 
@@ -169,7 +169,7 @@ const NeoGraph = (props) => {
       {
         visRef.current.vis.clearNetwork();
         visRef.current.vis.renderWithCypher(neo4jCypherQuery);
-      console.log(visRef.current.vis.nodes.length);
+        //console.log(visRef.current.vis.nodes.length);
       }
     }
     else

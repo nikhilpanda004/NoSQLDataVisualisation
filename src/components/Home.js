@@ -95,7 +95,7 @@ function Home (props) {
 
     const queryBuilder = () => {
       let queryText = "";
-      if(selectedEdges.size < 1)
+      if(selectedEdges.size < 1 && selectedLabels.size > 0)
       {
         selectedLabels.forEach (function(value) {
           if(queryText !== '')
@@ -104,7 +104,7 @@ function Home (props) {
         })
         queryText = "Match (label) Where " + queryText + " Return (label) Limit 25";
       }
-      else if(selectedLabels.size < 1)
+      else if(selectedLabels.size < 1 && selectedEdges.size > 0)
       {
         selectedEdges.forEach (function(value) {
           if(queryText !== '')
@@ -113,7 +113,7 @@ function Home (props) {
         })
         queryText = "Match p=()-[" + queryText + "]->() Return (p) Limit 25";
       }
-      else{
+      else if(selectedEdges.size > 0 && selectedLabels.size > 0){
         let queryLabel1 = '';
         let queryLabel2 = '';
         let queryEdge = '';
@@ -133,6 +133,9 @@ function Home (props) {
         queryText = "Match p=(label1)-[" + queryEdge + "]->(label2) Where " +  queryLabel1 + "   OR " + queryLabel1 + " Return p Limit 25"
       }
       setValue(queryText);
+      // console.log('value ', value)
+      // if (queryText === '')
+      //   setQuery(queryText);
     } 
 
       return (
